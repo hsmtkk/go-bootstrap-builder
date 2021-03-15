@@ -19,6 +19,7 @@ steps:
       - yml-lint
     image: golang:1.16
     commands:
+      - sleep 60
       - ./build.sh openbsd amd64
   - name: publish
     depends_on:
