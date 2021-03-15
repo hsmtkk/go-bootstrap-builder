@@ -1,2 +1,1 @@
-# openbsd-go-builder
-build Go for OpenBSD
+build go bootstrap
