@@ -2,6 +2,9 @@
 
 set -e
 
+GOOS=$1
+GOARCH=$2
+
 version=1.16.2
 tar=go1.16.2.src.tar.gz
 
@@ -14,9 +17,9 @@ tar fxz ${tar}
 
 cd go/src
 
-GOOS=openbsd GOARCH=amd64 ./bootstrap.bash
+GOOS=$GOOS GOARCH=$GOARCH ./bootstrap.bash
 
 cd ../..
 
-ls go-openbsd-amd64-bootstrap.tbz
+ls go-${GOOS}-${GOARCH}-bootstrap.tbz
 

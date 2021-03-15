@@ -8,16 +8,28 @@ steps:
     image: sdesbure/yamllint:latest
     commands:
       - yamllint .drone.yml
-  - name: build
+  - name: freebsd-build
+    depends_on:
+      - yml-lint
     image: golang:1.16
     commands:
-      - ./build.sh
+      - ./build.sh freebsd amd64
+  - name: openbsd-build
+    depends_on:
+      - yml-lint
+    image: golang:1.16
+    commands:
+      - ./build.sh openbsd amd64
   - name: publish
+    depends_on:
+      - freebsd-build
+      - openbsd-build
     image: plugins/github-release:1
     settings:
       api_key:
         from_secret: github-token
       files:
+        - go-freebsd-amd64-bootstrap.tbz
         - go-openbsd-amd64-bootstrap.tbz
     when:
       event:
