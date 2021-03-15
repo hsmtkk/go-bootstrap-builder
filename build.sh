@@ -18,7 +18,5 @@ GOOS=openbsd GOARCH=amd64 ./bootstrap.bash
 
 cd ../..
 
-ls go-openbsd-amd64-bootstrap
-
-tar cfJ go-openbsd-amd64-bootstrap.tar.xz go-openbsd-amd64-bootstrap
+ls go-openbsd-amd64-bootstrap.tbz
 
